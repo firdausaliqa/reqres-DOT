@@ -17,11 +17,27 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WS.sendRequest(findTestObject('Users/View users list'))
+'create new user and get id'
+response1 = WS.sendRequest(findTestObject('Users/Create new user'))
 
-response = WS.sendRequestAndVerify(findTestObject('Users/View users list'))
+def slurper = new groovy.json.JsonSlurper()
+def result = slurper.parseText(response1.getResponseBodyContent())
 
-WS.verifyElementText(response, 'data[1].first_name', 'Lindsay')
+//create variable to save lastname
+def idx = result.id
+def name = result.name
+println('id number is ' + idx)
+println('name is ' + name)
 
-WS.verifyElementText(response, 'data[2].id', '9')
+//passing value x1 as Global Variable
+GlobalVariable.id = idx
+GlobalVariable.name = name
+println('Global variable id is ' + GlobalVariable.id)
+println('Global variable name is ' + GlobalVariable.name)
+
+'update new user based on global variable id'
+WS.sendRequestAndVerify(findTestObject('Users/Update existing user'))
+
+'delete existing user based on global variable id for chaining'
+WS.sendRequest(findTestObject('Users/Delete existing user'))
 

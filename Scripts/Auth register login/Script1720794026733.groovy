@@ -17,11 +17,18 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WS.sendRequest(findTestObject('Users/View users list'))
+response2 = WS.sendRequest(findTestObject('Authentication/Success register'))
 
-response = WS.sendRequestAndVerify(findTestObject('Users/View users list'))
+def slurper = new groovy.json.JsonSlurper()
+def result = slurper.parseText(response2.getResponseBodyContent())
 
-WS.verifyElementText(response, 'data[1].first_name', 'Lindsay')
+//create variable to save token as global auth
+def tokenx = result.token
+println('token number is ' + tokenx)
 
-WS.verifyElementText(response, 'data[2].id', '9')
+WS.sendRequest(findTestObject('Authentication/Failed register no pass'))
+
+WS.sendRequest(findTestObject('Authentication/Success login'))
+
+WS.sendRequest(findTestObject('Authentication/Failed login no pass'))
 

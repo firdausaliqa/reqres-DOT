@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
    <description></description>
-   <name>View single user</name>
+   <name>Delete existing user</name>
    <tag></tag>
-   <elementGuidId>430c8779-67d9-442f-bf32-59f63295f74a</elementGuidId>
+   <elementGuidId>b17ea569-2e06-4894-9823-f91292ea29b4</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>false</useRalativeImagePath>
@@ -17,7 +17,7 @@
    <maxResponseSize>-1</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
    <path></path>
-   <restRequestMethod>GET</restRequestMethod>
+   <restRequestMethod>DELETE</restRequestMethod>
    <restUrl>https://reqres.in/api/users/93</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
@@ -42,10 +42,8 @@ RequestObject request = WSResponseManager.getInstance().getCurrentRequest()
 ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
 
 
-WS.verifyResponseStatusCode(response, 200)
+WS.verifyResponseStatusCode(response, 204)
 
-assertThat(response.getStatusCode()).isEqualTo(200)
-
-</verificationScript>
+assertThat(response.getStatusCode()).isEqualTo(204)</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>

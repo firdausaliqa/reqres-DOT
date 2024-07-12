@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
    <description></description>
-   <name>View users per page</name>
+   <name>View users list</name>
    <tag></tag>
    <elementGuidId>c1623141-e758-4b76-a17f-b1b9673e8045</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>

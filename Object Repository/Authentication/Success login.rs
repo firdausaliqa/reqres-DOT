@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
    <description></description>
-   <name>View single user</name>
+   <name>Success login</name>
    <tag></tag>
-   <elementGuidId>430c8779-67d9-442f-bf32-59f63295f74a</elementGuidId>
+   <elementGuidId>dad3f5f1-82ed-45c7-a7da-1b6f94d0b452</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>false</useRalativeImagePath>
-   <autoUpdateContent>true</autoUpdateContent>
+   <autoUpdateContent>false</autoUpdateContent>
    <connectionTimeout>-1</connectionTimeout>
    <followRedirects>false</followRedirects>
    <httpBody></httpBody>
-   <httpBodyContent></httpBodyContent>
-   <httpBodyType></httpBodyType>
+   <httpBodyContent>{
+  &quot;text&quot;: &quot;{\n    \&quot;email\&quot;: \&quot;eve.holt@reqres.in\&quot;,\n    \&quot;password\&quot;: \&quot;cityslicka\&quot;\n}&quot;,
+  &quot;contentType&quot;: &quot;application/json&quot;,
+  &quot;charset&quot;: &quot;UTF-8&quot;
+}</httpBodyContent>
+   <httpBodyType>text</httpBodyType>
+   <httpHeaderProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>Content-Type</name>
+      <type>Main</type>
+      <value>application/json</value>
+      <webElementGuid>2c53a49d-42c4-4664-b1fc-74a33b275932</webElementGuid>
+   </httpHeaderProperties>
    <katalonVersion>9.5.0</katalonVersion>
    <maxResponseSize>-1</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
    <path></path>
-   <restRequestMethod>GET</restRequestMethod>
-   <restUrl>https://reqres.in/api/users/93</restUrl>
+   <restRequestMethod>POST</restRequestMethod>
+   <restUrl>https://reqres.in/api/login</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
@@ -42,10 +54,8 @@ RequestObject request = WSResponseManager.getInstance().getCurrentRequest()
 ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
 
 
-WS.verifyResponseStatusCode(response, 200)
+WS.verifyResponseStatusCode(response, 201)
 
-assertThat(response.getStatusCode()).isEqualTo(200)
-
-</verificationScript>
+assertThat(response.getStatusCode()).isEqualTo(201)</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>
